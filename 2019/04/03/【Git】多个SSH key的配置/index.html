@@ -96,14 +96,17 @@
 
 
 
-  <meta property="og:type" content="article">
+  <meta name="description" content="MacOS系统为例当我们使用SSH钥匙生成命令 ssh-keygen -t rsa -C &amp;quot;your.email@example.com&amp;quot; 默认会在 ~/.ssh/ 目录下生成 id_rsa私钥及id_rsa.pub公钥两个文件。经常会遇到需要给另外一个代码托管网站生成SSH KEY的情况，这个时候若不加以配置，会导致之前的sshkey被覆盖的情况，面对这种需求时，我们需要做如">
+<meta property="og:type" content="article">
 <meta property="og:title" content="【Git】多个SSH key的配置">
 <meta property="og:url" content="http://yoursite.com/2019/04/03/【Git】多个SSH key的配置/index.html">
 <meta property="og:site_name" content="Geforceyu&#39;s Blog">
+<meta property="og:description" content="MacOS系统为例当我们使用SSH钥匙生成命令 ssh-keygen -t rsa -C &amp;quot;your.email@example.com&amp;quot; 默认会在 ~/.ssh/ 目录下生成 id_rsa私钥及id_rsa.pub公钥两个文件。经常会遇到需要给另外一个代码托管网站生成SSH KEY的情况，这个时候若不加以配置，会导致之前的sshkey被覆盖的情况，面对这种需求时，我们需要做如">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-04-03T09:41:02.730Z">
+<meta property="og:updated_time" content="2019-04-04T07:11:22.950Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="【Git】多个SSH key的配置">
+<meta name="twitter:description" content="MacOS系统为例当我们使用SSH钥匙生成命令 ssh-keygen -t rsa -C &amp;quot;your.email@example.com&amp;quot; 默认会在 ~/.ssh/ 目录下生成 id_rsa私钥及id_rsa.pub公钥两个文件。经常会遇到需要给另外一个代码托管网站生成SSH KEY的情况，这个时候若不加以配置，会导致之前的sshkey被覆盖的情况，面对这种需求时，我们需要做如">
 
 
 
@@ -340,7 +343,7 @@
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Geforceyu">
       <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="image" content="/images/avatar_wukong.PNG">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -378,12 +381,24 @@
                 
               
 
-              <time title="Created: 2019-04-03 17:30:06 / Modified: 17:41:02" itemprop="dateCreated datePublished" datetime="2019-04-03T17:30:06+08:00">2019-04-03</time>
+              <time title="Created: 2019-04-03 17:30:06" itemprop="dateCreated datePublished" datetime="2019-04-03T17:30:06+08:00">2019-04-03</time>
             
 
             
               
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2019-04-04 15:11:22" itemprop="dateModified" datetime="2019-04-04T15:11:22+08:00">2019-04-04</time>
               
             
           </span>
@@ -392,6 +407,19 @@
 
           
             
+            
+              
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+            
+                <span class="post-meta-item-text">Comments: </span>
+                <a href="/2019/04/03/【Git】多个SSH key的配置/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/04/03/【Git】多个SSH key的配置/" itemprop="commentCount"></span>
+                </a>
+              </span>
             
           
 
@@ -417,7 +445,10 @@
       
 
       
-        
+        <h3 id="MacOS系统为例"><a href="#MacOS系统为例" class="headerlink" title="MacOS系统为例"></a>MacOS系统为例</h3><p>当我们使用SSH钥匙生成命令 <code>ssh-keygen -t rsa -C &quot;your.email@example.com&quot;</code> 默认会在 <code>~/.ssh/</code> 目录下生成 <code>id_rsa</code>私钥及<code>id_rsa.pub</code>公钥两个文件。<br>经常会遇到需要给另外一个代码托管网站生成SSH KEY的情况，这个时候若不加以配置，会导致之前的sshkey被覆盖的情况，面对这种需求时，我们需要做如下处理。</p>
+<p><strong>为每个代码托管网站生成单独的私钥及公钥，再通过一个config文件来管理。config文件主要用以说明某个代码托管网站对应的sshkey存放的位置。</strong></p>
+<h5 id="具体做法如下"><a href="#具体做法如下" class="headerlink" title="具体做法如下:"></a>具体做法如下:</h5><p>1. </p>
+
       
     </div>
 
@@ -462,6 +493,10 @@
           
 
   
+    <div class="comments" id="comments">
+    </div>
+
+  
 
 
 
@@ -483,10 +518,21 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
 
-      <div class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <div class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/avatar_wukong.PNG" alt="Geforceyu">
             
               <p class="site-author-name" itemprop="name">Geforceyu</p>
               <div class="site-description motion-element" itemprop="description"></div>
@@ -556,6 +602,23 @@
         </div>
       </div>
 
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#MacOS系统为例"><span class="nav-number">1.</span> <span class="nav-text">MacOS系统为例</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#具体做法如下"><span class="nav-number">1.0.1.</span> <span class="nav-text">具体做法如下:</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
       
 
       
@@ -698,6 +761,36 @@
   
 
   
+  
+
+<script src="//cdn1.lncld.net/static/js/3.11.1/av-min.js"></script>
+
+
+
+<script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+
+<script>
+  var GUEST = ['nick', 'mail', 'link'];
+  var guest = 'nick,mail,link';
+  guest = guest.split(',').filter(function(item) {
+    return GUEST.indexOf(item) > -1;
+  });
+  new Valine({
+    el: '#comments',
+    verify: false,
+    notify: false,
+    appId: 'TRov7bhhskK89eYYacppx5Eu-gzGzoHsz',
+    appKey: 'ivugW57Xd2bCwDX9IvBymi83',
+    placeholder: 'Just go go',
+    avatar: 'mm',
+    meta: guest,
+    pageSize: '10' || 10,
+    visitor: false,
+    lang: 'zh-cn' || 'zh-cn'
+  });
+</script>
+
+
 
 
   

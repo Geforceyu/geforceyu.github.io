@@ -340,7 +340,7 @@
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Geforceyu">
       <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="image" content="/images/avatar_wukong.PNG">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -380,12 +380,24 @@
                 
               
 
-              <time title="Created: 2019-04-03 17:30:06 / Modified: 17:41:02" itemprop="dateCreated datePublished" datetime="2019-04-03T17:30:06+08:00">2019-04-03</time>
+              <time title="Created: 2019-04-03 17:30:06" itemprop="dateCreated datePublished" datetime="2019-04-03T17:30:06+08:00">2019-04-03</time>
             
 
             
               
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2019-04-04 15:11:22" itemprop="dateModified" datetime="2019-04-04T15:11:22+08:00">2019-04-04</time>
               
             
           </span>
@@ -394,6 +406,19 @@
 
           
             
+            
+              
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+            
+                <span class="post-meta-item-text">Comments: </span>
+                <a href="/2019/04/03/【Git】多个SSH key的配置/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/04/03/【Git】多个SSH key的配置/" itemprop="commentCount"></span>
+                </a>
+              </span>
             
           
 
@@ -421,7 +446,10 @@
       
         
           
-            
+            <h3 id="MacOS系统为例"><a href="#MacOS系统为例" class="headerlink" title="MacOS系统为例"></a>MacOS系统为例</h3><p>当我们使用SSH钥匙生成命令 <code>ssh-keygen -t rsa -C &quot;your.email@example.com&quot;</code> 默认会在 <code>~/.ssh/</code> 目录下生成 <code>id_rsa</code>私钥及<code>id_rsa.pub</code>公钥两个文件。<br>经常会遇到需要给另外一个代码托管网站生成SSH KEY的情况，这个时候若不加以配置，会导致之前的sshkey被覆盖的情况，面对这种需求时，我们需要做如下处理。</p>
+<p><strong>为每个代码托管网站生成单独的私钥及公钥，再通过一个config文件来管理。config文件主要用以说明某个代码托管网站对应的sshkey存放的位置。</strong></p>
+<h5 id="具体做法如下"><a href="#具体做法如下" class="headerlink" title="具体做法如下:"></a>具体做法如下:</h5><p>1. </p>
+
           
         
       
@@ -492,6 +520,8 @@
       <div class="site-overview-wrap sidebar-panel sidebar-panel-active">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/avatar_wukong.PNG" alt="Geforceyu">
             
               <p class="site-author-name" itemprop="name">Geforceyu</p>
               <div class="site-description motion-element" itemprop="description"></div>
@@ -699,6 +729,36 @@
   
 
   
+  
+
+<script src="//cdn1.lncld.net/static/js/3.11.1/av-min.js"></script>
+
+
+
+<script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+
+<script>
+  var GUEST = ['nick', 'mail', 'link'];
+  var guest = 'nick,mail,link';
+  guest = guest.split(',').filter(function(item) {
+    return GUEST.indexOf(item) > -1;
+  });
+  new Valine({
+    el: '#comments',
+    verify: false,
+    notify: false,
+    appId: 'TRov7bhhskK89eYYacppx5Eu-gzGzoHsz',
+    appKey: 'ivugW57Xd2bCwDX9IvBymi83',
+    placeholder: 'Just go go',
+    avatar: 'mm',
+    meta: guest,
+    pageSize: '10' || 10,
+    visitor: false,
+    lang: 'zh-cn' || 'zh-cn'
+  });
+</script>
+
+
 
 
 
