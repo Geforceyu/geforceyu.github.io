@@ -245,25 +245,6 @@
         
         
           
-          <li class="menu-item menu-item-ios">
-
-    
-    
-    
-      
-    
-
-    
-      
-    
-
-    <a href="/iOS/" rel="section"><i class="menu-item-icon fa fa-fw fa-apple"></i> <br>iOS</a>
-
-  </li>
-        
-        
-        
-          
           <li class="menu-item menu-item-archives">
 
     
@@ -276,7 +257,7 @@
       
     
 
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">1</span></a>
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">2</span></a>
 
   </li>
 
@@ -319,6 +300,237 @@
           <div id="content" class="content">
             
   <section id="posts" class="posts-expand">
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/04/04/【iOS】模块化解耦/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Geforceyu">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar_wukong.PNG">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Geforceyu's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2019/04/04/【iOS】模块化解耦/" class="post-title-link" itemprop="url">【iOS】模块化解耦</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2019-04-04 16:27:00 / Modified: 17:18:25" itemprop="dateCreated datePublished" datetime="2019-04-04T16:27:00+08:00">2019-04-04</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/iOS/" itemprop="url" rel="index"><span itemprop="name">iOS</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+              
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+            
+                <span class="post-meta-item-text">Comments: </span>
+                <a href="/2019/04/04/【iOS】模块化解耦/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/04/04/【iOS】模块化解耦/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+            <span id="/2019/04/04/【iOS】模块化解耦/" class="leancloud_visitors" data-flag-title="【iOS】模块化解耦">
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Views: </span>
+              
+                <span class="leancloud-visitors-count"></span>
+            </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="FisherMan"><a href="#FisherMan" class="headerlink" title="FisherMan"></a>FisherMan</h1><p><a href="https://github.com/Geforceyu/FisherMan" target="_blank" rel="noopener">详细内容请下载代码查看</a></p>
+<h3 id="架构概览"><a href="#架构概览" class="headerlink" title="架构概览"></a>架构概览</h3><p><img src="https://raw.githubusercontent.com/Geforceyu/FisherMan/master/ReadmeSource/main.png" alt="FisherMan"></p>
+<p><strong>此架构的核心思想是，将经典的基于整个APP维度的AppDelegate、RootViewController缩小为模块维度，即整个项目由多个模块组合而成，每个模块都有自己的ModDelegate、ModRootViewController，由一个全局的容器来包含这些模块，APP的生命周期也交由这个全局容器处理，容器再将APP事件分发到各个模块。所有模块和服务只依赖此容器，模块间互不依赖</strong></p>
+<p><img src="https://raw.githubusercontent.com/Geforceyu/FisherMan/master/ReadmeSource/modules.png" alt></p>
+<h3 id="面向协议"><a href="#面向协议" class="headerlink" title="面向协议"></a>面向协议</h3><blockquote>
+<p>此架构主要利用OC的协议,来达到约束模块和服务的目的，同时协议也使得架构更加灵活、有效减少耦合和强依赖。以下两个协议即此架构的核心协议</p>
+</blockquote>
+<ol>
+<li><p><strong>FSMModProtocol</strong><br><br><em>所有模块的代理者都需要遵守此协议，以统一模块与容器的交互一致性，以及接收app的生命周期事件。</em></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">@protocol FSMModProtocol &lt;NSObject&gt;</span><br><span class="line"></span><br><span class="line">@required</span><br><span class="line">//返回当前模块的根视图控制器</span><br><span class="line">- (UIViewController *)rootViewControllerForMod;</span><br><span class="line"></span><br><span class="line">@optional</span><br><span class="line"></span><br><span class="line">- (void)modDidFinishLaunchingWithOptions:(NSDictionary *)options;</span><br><span class="line"></span><br><span class="line">- (void)modWillResignActive;</span><br><span class="line"></span><br><span class="line">- (void)modDidEnterBackground;</span><br><span class="line"></span><br><span class="line">- (void)modWillEnterForeground;</span><br><span class="line"></span><br><span class="line">- (void)modDidBecomeActive;</span><br><span class="line"></span><br><span class="line">- (void)modWillTerminate;</span><br><span class="line"></span><br><span class="line">- (void)modDidReceiveRemoteNotification:(NSDictionary *)userInfo fetchCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler;</span><br><span class="line"></span><br><span class="line">@end</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>FSMServiceProtol</strong><br><br><em>所有服务协议的根协议，主要定义了服务的生命周期事件，统一服务模型，以便于各服务提供者在各个生命周期做数据初始化或逻辑处理等</em></p>
+</li>
+</ol>
+<hr>
+<h3 id="核心方法"><a href="#核心方法" class="headerlink" title="核心方法"></a>核心方法</h3><ul>
+<li><p>模块间的跳转</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">//启动订单模块</span><br><span class="line">[[FisherMan man] launchModuleWithName:@&quot;TradeMod&quot; parameters:nil transition:FMModTransitionTypePush];</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>服务的调用</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">//定义登录服务所能提供的服务</span><br><span class="line">@protocol LoginService &lt;FSMServiceProtocol&gt;</span><br><span class="line"></span><br><span class="line">- (void)loginWithUserName:(NSString *)userName passwd:(NSString *)passwd;</span><br><span class="line"></span><br><span class="line">- (NSString *)loginUserName;</span><br><span class="line"></span><br><span class="line">@end</span><br><span class="line"></span><br><span class="line">//调用登录服务</span><br><span class="line">id&lt;LoginService&gt; loginService = [[FisherMan man] findServiceWithName:@&quot;LoginService&quot;];</span><br><span class="line">[loginService loginWithUserName:@&quot;xiaowang&quot; passwd:@&quot;123&quot;];</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<blockquote>
+<p>服务的调用方和提供方不直接依赖，而是通过中间者和虚拟的服务协议，若以后服务提供方需要更换，调用方代码无需变动，易于切换</p>
+</blockquote>
+<h3 id="注册"><a href="#注册" class="headerlink" title="注册"></a>注册</h3><blockquote>
+<p>采用plist来保存模块和服务的注册信息</p>
+</blockquote>
+<p><img src="https://raw.githubusercontent.com/Geforceyu/FisherMan/master/ReadmeSource/profile.png" alt></p>
+<blockquote>
+<p>tip:这里services和modules的信息放在一个plist文件里面，若项目过大，可考虑将services和modules的注册plist文件拆成两个分别存放。</p>
+<ul>
+<li>每个服务的信息包括服务名(name)及服务的实现类名(imp)组成。</li>
+<li>每个模块的信息包括模块的名(name)及模块的代理者类名(delegate)组成。</li>
+</ul>
+</blockquote>
+<h3 id="大致流程"><a href="#大致流程" class="headerlink" title="大致流程"></a>大致流程</h3><ol>
+<li>APP启动后初始化FisherContext,指定plist等</li>
+<li>FisherMan读取plist文件,获取模块和服务的注册信息</li>
+<li>启动注册的服务,并记录运行中的服务</li>
+<li>创建注册表中第一个模块的代理者,询问代理者以获取第一个模块的根视图控制器，作为app启动的第一个界面</li>
+<li>模块中调用服务时，通过FisherMan和<code>服务名</code>查找对应服务，FisherMan通过服务注册信息找到实际服务提供者</li>
+<li>启动其它模块时，通过FiserMan和<code>模块名</code>来启动并跳转，FisherMan通过模块注册信息，找到模块的代理者，并向模块代理者询问此模块的根视图控制器以跳转到此视图控制器。</li>
+</ol>
+<hr>
+<h4 id="详细内容请下载代码查看"><a href="#详细内容请下载代码查看" class="headerlink" title="详细内容请下载代码查看"></a><a href="https://github.com/Geforceyu/FisherMan" target="_blank" rel="noopener">详细内容请下载代码查看</a></h4><hr>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
     
       
 
@@ -397,7 +609,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2019-04-04 16:06:45" itemprop="dateModified" datetime="2019-04-04T16:06:45+08:00">2019-04-04</time>
+                <time title="Modified: 2019-04-04 16:45:22" itemprop="dateModified" datetime="2019-04-04T16:45:22+08:00">2019-04-04</time>
               
             
           </span>
@@ -559,14 +771,42 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">1</span>
+                    <span class="site-state-item-count">2</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
               
 
               
+                
+                
+                <div class="site-state-item site-state-categories">
+                  
+                    
+                    
+                      
+                    
+                    <span class="site-state-item-count">1</span>
+                    <span class="site-state-item-name">categories</span>
+                  
+                </div>
+              
 
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">2</span>
+                    <span class="site-state-item-name">tags</span>
+                  
+                </div>
               
             </nav>
           
@@ -700,6 +940,9 @@
 
 
 
+  
+  
+
 
 
 
@@ -718,6 +961,12 @@
 
   
   <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/three/three.min.js"></script>
+
+  
+  <script src="/lib/three/three-waves.min.js"></script>
 
 
   

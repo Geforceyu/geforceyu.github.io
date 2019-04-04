@@ -96,18 +96,22 @@
 
 
 
-  <meta name="description" content="MacOS系统为例开发中经常会遇到需要给不同代码托管平台生成SSH key的情况，面对这种需求，我们需要做一些处理来避免之前配置的key失效。 为每个代码托管网站生成单独的私钥及公钥，再通过一个config文件来统一管理。config文件主要用以说明各个代码托管网站对应的sshkey存放的位置。 在具体操作之前，我们先来看看key存放的位置：当我们使用SSH钥匙生成命令 ssh-keygen -t">
-<meta name="keywords" content="Git">
+  <meta name="description" content="FisherMan详细内容请下载代码查看 架构概览 此架构的核心思想是，将经典的基于整个APP维度的AppDelegate、RootViewController缩小为模块维度，即整个项目由多个模块组合而成，每个模块都有自己的ModDelegate、ModRootViewController，由一个全局的容器来包含这些模块，APP的生命周期也交由这个全局容器处理，容器再将APP事件分发到各个模块。所">
+<meta name="keywords" content="iOS">
 <meta property="og:type" content="article">
-<meta property="og:title" content="【Git】多个SSH key的配置">
-<meta property="og:url" content="http://yoursite.com/2019/04/03/【Git】多个SSH key的配置/index.html">
+<meta property="og:title" content="【iOS】模块化解耦">
+<meta property="og:url" content="http://yoursite.com/2019/04/04/【iOS】模块化解耦/index.html">
 <meta property="og:site_name" content="Geforceyu&#39;s Blog">
-<meta property="og:description" content="MacOS系统为例开发中经常会遇到需要给不同代码托管平台生成SSH key的情况，面对这种需求，我们需要做一些处理来避免之前配置的key失效。 为每个代码托管网站生成单独的私钥及公钥，再通过一个config文件来统一管理。config文件主要用以说明各个代码托管网站对应的sshkey存放的位置。 在具体操作之前，我们先来看看key存放的位置：当我们使用SSH钥匙生成命令 ssh-keygen -t">
+<meta property="og:description" content="FisherMan详细内容请下载代码查看 架构概览 此架构的核心思想是，将经典的基于整个APP维度的AppDelegate、RootViewController缩小为模块维度，即整个项目由多个模块组合而成，每个模块都有自己的ModDelegate、ModRootViewController，由一个全局的容器来包含这些模块，APP的生命周期也交由这个全局容器处理，容器再将APP事件分发到各个模块。所">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-04-04T08:45:22.117Z">
+<meta property="og:image" content="https://raw.githubusercontent.com/Geforceyu/FisherMan/master/ReadmeSource/main.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/Geforceyu/FisherMan/master/ReadmeSource/modules.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/Geforceyu/FisherMan/master/ReadmeSource/profile.png">
+<meta property="og:updated_time" content="2019-04-04T09:18:25.816Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="【Git】多个SSH key的配置">
-<meta name="twitter:description" content="MacOS系统为例开发中经常会遇到需要给不同代码托管平台生成SSH key的情况，面对这种需求，我们需要做一些处理来避免之前配置的key失效。 为每个代码托管网站生成单独的私钥及公钥，再通过一个config文件来统一管理。config文件主要用以说明各个代码托管网站对应的sshkey存放的位置。 在具体操作之前，我们先来看看key存放的位置：当我们使用SSH钥匙生成命令 ssh-keygen -t">
+<meta name="twitter:title" content="【iOS】模块化解耦">
+<meta name="twitter:description" content="FisherMan详细内容请下载代码查看 架构概览 此架构的核心思想是，将经典的基于整个APP维度的AppDelegate、RootViewController缩小为模块维度，即整个项目由多个模块组合而成，每个模块都有自己的ModDelegate、ModRootViewController，由一个全局的容器来包含这些模块，APP的生命周期也交由这个全局容器处理，容器再将APP事件分发到各个模块。所">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/Geforceyu/FisherMan/master/ReadmeSource/main.png">
 
 
 
@@ -115,7 +119,7 @@
 
   
   
-  <link rel="canonical" href="http://yoursite.com/2019/04/03/【Git】多个SSH key的配置/">
+  <link rel="canonical" href="http://yoursite.com/2019/04/04/【iOS】模块化解耦/">
 
 
 
@@ -125,7 +129,7 @@
   };
 </script>
 
-  <title>【Git】多个SSH key的配置 | Geforceyu's Blog</title>
+  <title>【iOS】模块化解耦 | Geforceyu's Blog</title>
   
 
 
@@ -320,7 +324,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/04/03/【Git】多个SSH key的配置/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/04/04/【iOS】模块化解耦/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Geforceyu">
@@ -337,7 +341,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">【Git】多个SSH key的配置
+          <h1 class="post-title" itemprop="name headline">【iOS】模块化解耦
 
               
             
@@ -363,28 +367,34 @@
                 
               
 
-              <time title="Created: 2019-04-03 17:30:06" itemprop="dateCreated datePublished" datetime="2019-04-03T17:30:06+08:00">2019-04-03</time>
+              <time title="Created: 2019-04-04 16:27:00 / Modified: 17:18:25" itemprop="dateCreated datePublished" datetime="2019-04-04T16:27:00+08:00">2019-04-04</time>
             
 
             
               
 
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Edited on</span>
-                
-                <time title="Modified: 2019-04-04 16:45:22" itemprop="dateModified" datetime="2019-04-04T16:45:22+08:00">2019-04-04</time>
               
             
           </span>
 
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/iOS/" itemprop="url" rel="index"><span itemprop="name">iOS</span></a></span>
+
+                
+                
+              
+            </span>
           
 
           
@@ -398,8 +408,8 @@
                 </span>
             
                 <span class="post-meta-item-text">Comments: </span>
-                <a href="/2019/04/03/【Git】多个SSH key的配置/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2019/04/03/【Git】多个SSH key的配置/" itemprop="commentCount"></span>
+                <a href="/2019/04/04/【iOS】模块化解耦/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/04/04/【iOS】模块化解耦/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -407,7 +417,7 @@
 
           
           
-            <span id="/2019/04/03/【Git】多个SSH key的配置/" class="leancloud_visitors" data-flag-title="【Git】多个SSH key的配置">
+            <span id="/2019/04/04/【iOS】模块化解耦/" class="leancloud_visitors" data-flag-title="【iOS】模块化解耦">
               <span class="post-meta-divider">|</span>
               <span class="post-meta-item-icon">
                 <i class="fa fa-eye"></i>
@@ -438,23 +448,53 @@
       
 
       
-        <h3 id="MacOS系统为例"><a href="#MacOS系统为例" class="headerlink" title="MacOS系统为例"></a>MacOS系统为例</h3><p>开发中经常会遇到需要给不同代码托管平台生成SSH key的情况，面对这种需求，我们需要做一些处理来避免之前配置的key失效。</p>
-<p><strong>为每个代码托管网站生成单独的私钥及公钥，再通过一个config文件来统一管理。config文件主要用以说明各个代码托管网站对应的sshkey存放的位置。</strong></p>
-<p>在具体操作之前，我们先来看看key存放的位置：<br>当我们使用SSH钥匙生成命令 <code>ssh-keygen -t rsa -C &quot;your.email@example.com&quot;</code> 默认情况会在 <code>~/.ssh/</code> 目录下生成 <code>id_rsa</code>私钥及<code>id_rsa.pub</code>公钥两个文件。</p>
-<h5 id="具体做法如下"><a href="#具体做法如下" class="headerlink" title="具体做法如下:"></a>具体做法如下:</h5><ol>
-<li>例如为github生成ssh key。终端输入命令 <code>ssh-keygen -t rsa -C &quot;email@example.com&quot;</code> 回车，这时候会提示输入文件名来保存key，例如我们取名<strong>id_rsa_github</strong>，后面配置密码可以直接回车</li>
-<li>同样的方法例如为gitlab生成对应的ssh key，例如取名为<strong>id_rsa_gitlab</strong></li>
-<li><code>cd</code>到<code>~/.ssh/</code>目录下我们可以看到刚才创建的保存key的文件。</li>
-<li>在此目录下创建config文件并填写配置信息，可以使用<code>touch config</code>命令直接创建。填写的信息模版如下：</li>
+        <h1 id="FisherMan"><a href="#FisherMan" class="headerlink" title="FisherMan"></a>FisherMan</h1><p><a href="https://github.com/Geforceyu/FisherMan" target="_blank" rel="noopener">详细内容请下载代码查看</a></p>
+<h3 id="架构概览"><a href="#架构概览" class="headerlink" title="架构概览"></a>架构概览</h3><p><img src="https://raw.githubusercontent.com/Geforceyu/FisherMan/master/ReadmeSource/main.png" alt="FisherMan"></p>
+<p><strong>此架构的核心思想是，将经典的基于整个APP维度的AppDelegate、RootViewController缩小为模块维度，即整个项目由多个模块组合而成，每个模块都有自己的ModDelegate、ModRootViewController，由一个全局的容器来包含这些模块，APP的生命周期也交由这个全局容器处理，容器再将APP事件分发到各个模块。所有模块和服务只依赖此容器，模块间互不依赖</strong></p>
+<p><img src="https://raw.githubusercontent.com/Geforceyu/FisherMan/master/ReadmeSource/modules.png" alt></p>
+<h3 id="面向协议"><a href="#面向协议" class="headerlink" title="面向协议"></a>面向协议</h3><blockquote>
+<p>此架构主要利用OC的协议,来达到约束模块和服务的目的，同时协议也使得架构更加灵活、有效减少耦合和强依赖。以下两个协议即此架构的核心协议</p>
+</blockquote>
+<ol>
+<li><p><strong>FSMModProtocol</strong><br><br><em>所有模块的代理者都需要遵守此协议，以统一模块与容器的交互一致性，以及接收app的生命周期事件。</em></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">@protocol FSMModProtocol &lt;NSObject&gt;</span><br><span class="line"></span><br><span class="line">@required</span><br><span class="line">//返回当前模块的根视图控制器</span><br><span class="line">- (UIViewController *)rootViewControllerForMod;</span><br><span class="line"></span><br><span class="line">@optional</span><br><span class="line"></span><br><span class="line">- (void)modDidFinishLaunchingWithOptions:(NSDictionary *)options;</span><br><span class="line"></span><br><span class="line">- (void)modWillResignActive;</span><br><span class="line"></span><br><span class="line">- (void)modDidEnterBackground;</span><br><span class="line"></span><br><span class="line">- (void)modWillEnterForeground;</span><br><span class="line"></span><br><span class="line">- (void)modDidBecomeActive;</span><br><span class="line"></span><br><span class="line">- (void)modWillTerminate;</span><br><span class="line"></span><br><span class="line">- (void)modDidReceiveRemoteNotification:(NSDictionary *)userInfo fetchCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler;</span><br><span class="line"></span><br><span class="line">@end</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>FSMServiceProtol</strong><br><br><em>所有服务协议的根协议，主要定义了服务的生命周期事件，统一服务模型，以便于各服务提供者在各个生命周期做数据初始化或逻辑处理等</em></p>
+</li>
 </ol>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta"># github.com</span></span><br><span class="line">Host github.com</span><br><span class="line">HostName github.com</span><br><span class="line">PreferredAuthentications publickey</span><br><span class="line">IdentityFile ~/.ssh/id_rsa_github</span><br><span class="line"></span><br><span class="line"><span class="meta"># gitlab.yourcompany.com</span></span><br><span class="line">Host gitlab.yourcompany.com</span><br><span class="line">HostName gitlab.yourcompany.com</span><br><span class="line">PreferredAuthentications publickey</span><br><span class="line">IdentityFile ~/.ssh/id_rsa_gitlab</span><br></pre></td></tr></table></figure>
-<ol start="5">
-<li>添加密钥到ssh</li>
+<hr>
+<h3 id="核心方法"><a href="#核心方法" class="headerlink" title="核心方法"></a>核心方法</h3><ul>
+<li><p>模块间的跳转</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">//启动订单模块</span><br><span class="line">[[FisherMan man] launchModuleWithName:@&quot;TradeMod&quot; parameters:nil transition:FMModTransitionTypePush];</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>服务的调用</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">//定义登录服务所能提供的服务</span><br><span class="line">@protocol LoginService &lt;FSMServiceProtocol&gt;</span><br><span class="line"></span><br><span class="line">- (void)loginWithUserName:(NSString *)userName passwd:(NSString *)passwd;</span><br><span class="line"></span><br><span class="line">- (NSString *)loginUserName;</span><br><span class="line"></span><br><span class="line">@end</span><br><span class="line"></span><br><span class="line">//调用登录服务</span><br><span class="line">id&lt;LoginService&gt; loginService = [[FisherMan man] findServiceWithName:@&quot;LoginService&quot;];</span><br><span class="line">[loginService loginWithUserName:@&quot;xiaowang&quot; passwd:@&quot;123&quot;];</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<blockquote>
+<p>服务的调用方和提供方不直接依赖，而是通过中间者和虚拟的服务协议，若以后服务提供方需要更换，调用方代码无需变动，易于切换</p>
+</blockquote>
+<h3 id="注册"><a href="#注册" class="headerlink" title="注册"></a>注册</h3><blockquote>
+<p>采用plist来保存模块和服务的注册信息</p>
+</blockquote>
+<p><img src="https://raw.githubusercontent.com/Geforceyu/FisherMan/master/ReadmeSource/profile.png" alt></p>
+<blockquote>
+<p>tip:这里services和modules的信息放在一个plist文件里面，若项目过大，可考虑将services和modules的注册plist文件拆成两个分别存放。</p>
+<ul>
+<li>每个服务的信息包括服务名(name)及服务的实现类名(imp)组成。</li>
+<li>每个模块的信息包括模块的名(name)及模块的代理者类名(delegate)组成。</li>
+</ul>
+</blockquote>
+<h3 id="大致流程"><a href="#大致流程" class="headerlink" title="大致流程"></a>大致流程</h3><ol>
+<li>APP启动后初始化FisherContext,指定plist等</li>
+<li>FisherMan读取plist文件,获取模块和服务的注册信息</li>
+<li>启动注册的服务,并记录运行中的服务</li>
+<li>创建注册表中第一个模块的代理者,询问代理者以获取第一个模块的根视图控制器，作为app启动的第一个界面</li>
+<li>模块中调用服务时，通过FisherMan和<code>服务名</code>查找对应服务，FisherMan通过服务注册信息找到实际服务提供者</li>
+<li>启动其它模块时，通过FiserMan和<code>模块名</code>来启动并跳转，FisherMan通过模块注册信息，找到模块的代理者，并向模块代理者询问此模块的根视图控制器以跳转到此视图控制器。</li>
 </ol>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ssh-add ~/.ssh/id_rsa_github</span><br><span class="line">ssh-add ~/.ssh/id_rsa_gitlab</span><br></pre></td></tr></table></figure>
-<ol start="6">
-<li>到各个代码托管后台配置公钥即id_rsa_***.pub的内容</li>
-</ol>
+<hr>
+<h4 id="详细内容请下载代码查看"><a href="#详细内容请下载代码查看" class="headerlink" title="详细内容请下载代码查看"></a><a href="https://github.com/Geforceyu/FisherMan" target="_blank" rel="noopener">详细内容请下载代码查看</a></h4><hr>
 
       
     </div>
@@ -478,7 +518,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/Git/" rel="tag"># Git</a>
+            <a href="/tags/iOS/" rel="tag"># iOS</a>
           
         </div>
       
@@ -491,15 +531,15 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
+              <a href="/2019/04/03/【Git】多个SSH key的配置/" rel="next" title="【Git】多个SSH key的配置">
+                <i class="fa fa-chevron-left"></i> 【Git】多个SSH key的配置
+              </a>
+            
           </div>
 
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/04/04/【iOS】模块化解耦/" rel="prev" title="【iOS】模块化解耦">
-                【iOS】模块化解耦 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -670,7 +710,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#MacOS系统为例"><span class="nav-number">1.</span> <span class="nav-text">MacOS系统为例</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#具体做法如下"><span class="nav-number">1.0.1.</span> <span class="nav-text">具体做法如下:</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#FisherMan"><span class="nav-number">1.</span> <span class="nav-text">FisherMan</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#架构概览"><span class="nav-number">1.0.1.</span> <span class="nav-text">架构概览</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#面向协议"><span class="nav-number">1.0.2.</span> <span class="nav-text">面向协议</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#核心方法"><span class="nav-number">1.0.3.</span> <span class="nav-text">核心方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#注册"><span class="nav-number">1.0.4.</span> <span class="nav-text">注册</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#大致流程"><span class="nav-number">1.0.5.</span> <span class="nav-text">大致流程</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#详细内容请下载代码查看"><span class="nav-number">1.0.5.1.</span> <span class="nav-text">详细内容请下载代码查看</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>
