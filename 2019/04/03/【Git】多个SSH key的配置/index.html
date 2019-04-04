@@ -103,7 +103,7 @@
 <meta property="og:site_name" content="Geforceyu&#39;s Blog">
 <meta property="og:description" content="MacOS系统为例开发中经常会遇到需要给不同代码托管平台生成SSH key的情况，面对这种需求，我们需要做一些处理来避免之前配置的key失效。 为每个代码托管网站生成单独的私钥及公钥，再通过一个config文件来统一管理。config文件主要用以说明各个代码托管网站对应的sshkey存放的位置。 在具体操作之前，我们先来看看key存放的位置：当我们使用SSH钥匙生成命令 ssh-keygen -t">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-04-04T07:57:13.256Z">
+<meta property="og:updated_time" content="2019-04-04T08:03:57.277Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="【Git】多个SSH key的配置">
 <meta name="twitter:description" content="MacOS系统为例开发中经常会遇到需要给不同代码托管平台生成SSH key的情况，面对这种需求，我们需要做一些处理来避免之前配置的key失效。 为每个代码托管网站生成单独的私钥及公钥，再通过一个config文件来统一管理。config文件主要用以说明各个代码托管网站对应的sshkey存放的位置。 在具体操作之前，我们先来看看key存放的位置：当我们使用SSH钥匙生成命令 ssh-keygen -t">
@@ -398,7 +398,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2019-04-04 15:57:13" itemprop="dateModified" datetime="2019-04-04T15:57:13+08:00">2019-04-04</time>
+                <time title="Modified: 2019-04-04 16:03:57" itemprop="dateModified" datetime="2019-04-04T16:03:57+08:00">2019-04-04</time>
               
             
           </span>
@@ -455,6 +455,13 @@
 <li>在此目录下创建config文件并填写配置信息，可以使用<code>touch config</code>命令直接创建。填写的信息模版如下：</li>
 </ol>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta"># github.com</span></span><br><span class="line">Host github.com</span><br><span class="line">HostName github.com</span><br><span class="line">PreferredAuthentications publickey</span><br><span class="line">IdentityFile ~/.ssh/id_rsa_github</span><br><span class="line"></span><br><span class="line"><span class="meta"># gitlab.yourcompany.com</span></span><br><span class="line">Host gitlab.yourcompany.com</span><br><span class="line">HostName gitlab.yourcompany.com</span><br><span class="line">PreferredAuthentications publickey</span><br><span class="line">IdentityFile ~/.ssh/id_rsa_gitlab</span><br></pre></td></tr></table></figure>
+<ol start="5">
+<li><p>添加密钥到ssh</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ssh-add ~/.ssh/id_rsa_github</span><br><span class="line">ssh-add ~/.ssh/id_rsa_gitlab</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>到各个代码托管后台配置公钥即id_rsa_***.pub的内容</p>
+</li>
+</ol>
 
       
     </div>
