@@ -397,7 +397,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2019-04-04 15:11:22" itemprop="dateModified" datetime="2019-04-04T15:11:22+08:00">2019-04-04</time>
+                <time title="Modified: 2019-04-04 15:57:13" itemprop="dateModified" datetime="2019-04-04T15:57:13+08:00">2019-04-04</time>
               
             
           </span>
@@ -446,9 +446,16 @@
       
         
           
-            <h3 id="MacOS系统为例"><a href="#MacOS系统为例" class="headerlink" title="MacOS系统为例"></a>MacOS系统为例</h3><p>当我们使用SSH钥匙生成命令 <code>ssh-keygen -t rsa -C &quot;your.email@example.com&quot;</code> 默认会在 <code>~/.ssh/</code> 目录下生成 <code>id_rsa</code>私钥及<code>id_rsa.pub</code>公钥两个文件。<br>经常会遇到需要给另外一个代码托管网站生成SSH KEY的情况，这个时候若不加以配置，会导致之前的sshkey被覆盖的情况，面对这种需求时，我们需要做如下处理。</p>
-<p><strong>为每个代码托管网站生成单独的私钥及公钥，再通过一个config文件来管理。config文件主要用以说明某个代码托管网站对应的sshkey存放的位置。</strong></p>
-<h5 id="具体做法如下"><a href="#具体做法如下" class="headerlink" title="具体做法如下:"></a>具体做法如下:</h5><p>1. </p>
+            <h3 id="MacOS系统为例"><a href="#MacOS系统为例" class="headerlink" title="MacOS系统为例"></a>MacOS系统为例</h3><p>开发中经常会遇到需要给不同代码托管平台生成SSH key的情况，面对这种需求，我们需要做一些处理来避免之前配置的key失效。</p>
+<p><strong>为每个代码托管网站生成单独的私钥及公钥，再通过一个config文件来统一管理。config文件主要用以说明各个代码托管网站对应的sshkey存放的位置。</strong></p>
+<p>在具体操作之前，我们先来看看key存放的位置：<br>当我们使用SSH钥匙生成命令 <code>ssh-keygen -t rsa -C &quot;your.email@example.com&quot;</code> 默认情况会在 <code>~/.ssh/</code> 目录下生成 <code>id_rsa</code>私钥及<code>id_rsa.pub</code>公钥两个文件。</p>
+<h5 id="具体做法如下"><a href="#具体做法如下" class="headerlink" title="具体做法如下:"></a>具体做法如下:</h5><ol>
+<li>例如为github生成ssh key。终端输入命令 <code>ssh-keygen -t rsa -C &quot;email@example.com&quot;</code> 回车，这时候会提示输入文件名来保存key，例如我们取名<strong>id_rsa_github</strong>，后面配置密码可以直接回车</li>
+<li>同样的方法例如为gitlab生成对应的ssh key，例如取名为<strong>id_rsa_gitlab</strong></li>
+<li><code>cd</code>到<code>~/.ssh/</code>目录下我们可以看到刚才创建的保存key的文件。</li>
+<li>在此目录下创建config文件并填写配置信息，可以使用<code>touch config</code>命令直接创建。填写的信息模版如下：</li>
+</ol>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta"># github.com</span></span><br><span class="line">Host github.com</span><br><span class="line">HostName github.com</span><br><span class="line">PreferredAuthentications publickey</span><br><span class="line">IdentityFile ~/.ssh/id_rsa_github</span><br><span class="line"></span><br><span class="line"><span class="meta"># gitlab.yourcompany.com</span></span><br><span class="line">Host gitlab.yourcompany.com</span><br><span class="line">HostName gitlab.yourcompany.com</span><br><span class="line">PreferredAuthentications publickey</span><br><span class="line">IdentityFile ~/.ssh/id_rsa_gitlab</span><br></pre></td></tr></table></figure>
 
           
         
